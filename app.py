@@ -30,7 +30,11 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
+        app.logger.error("Invalid signature. Check your channel access token/secret.")
         abort(400)
+    except Exception as e:
+        app.logger.error(f"Error: {e}")
+        abort(500)
 
     return 'OK'
 
@@ -51,12 +55,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="อาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
 
     elif text == "ฮึ้บ":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))       
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))   
 
+    else:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
 
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=text))
 
 if __name__ == "__main__":
     app.run(port=10000)
