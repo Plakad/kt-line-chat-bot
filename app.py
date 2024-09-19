@@ -11,7 +11,7 @@ handler = WebhookHandler("702054376e553a49abd154de87dd8821")
 
 @app.route("/")
 def home():
-    return print("Welcome to My Line Chat Bot! \n เขียนให้ดูรกๆ \n รกๆอีกสักบรรทัด >>*<< \n (Kanpot: Demo LineChatBot)")
+    return "Welcome to My Line Chat Bot! \n เขียนให้ดูรกๆ \n รกๆอีกสักบรรทัด >>*<< \n (Kanpot: Demo LineChatBot)"
 
 @app.route("/callback", methods=['POST'])
 def callback():
