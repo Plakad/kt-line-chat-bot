@@ -9,7 +9,9 @@ app = Flask(__name__)
 line_bot_api = LineBotApi("UOSxZp9mU5bdu0XhuStH2vsg9rRdS0FxUbAOg+7eyjWc7OUTt68D996qsH1H5CtkhnlJkpGAMjAnDzbYnMfA8p14OVMDnOeEDTCus/r7umTfLGXCIaqxA8/7PTZs/mXHhUJGfSWHLsIl4OGUo5C1rgdB04t89/1O/w1cDnyilFU=")
 handler = WebhookHandler("702054376e553a49abd154de87dd8821")
 
-
+@app.route("/")
+def home():
+    return "Welcome to My Line Chat Bot! \n เขียนให้ดูรกๆ \n (Kanpot: Demo LineChatBot)"
 
 @app.route("/callback", methods=['POST'])
 def callback():
