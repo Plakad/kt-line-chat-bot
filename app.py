@@ -61,7 +61,7 @@ def handle_message(event):
     elif text == "ฮึ้บ":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))   
 
-    elif text == int("555"):
+    elif text == str("555"):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n ตาหลกแล๊ะ!!"))
 
     elif text == "เทอ":
