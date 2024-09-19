@@ -11,7 +11,7 @@ handler = WebhookHandler("702054376e553a49abd154de87dd8821")
 
 @app.route("/")
 def home():
-    return "Welcome to My Line Chat Bot! \n เขียนให้ดูรกๆ \n (Kanpot: Demo LineChatBot)"
+    return print("Welcome to My Line Chat Bot! \n เขียนให้ดูรกๆ \n รกๆอีกสักบรรทัด >>*<< \n (Kanpot: Demo LineChatBot)")
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -44,7 +44,15 @@ def handle_message(event):
 
     elif text == "อยากผอมจัง":
         if isinstance(event.source, SourceUser):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))        
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))
+
+    elif text == "พี่ส้ม":
+        if isinstance(event.source, SourceUser):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="อาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
+
+    elif text == "ฮึ้บ":
+        if isinstance(event.source, SourceUser):
+            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))       
 
 
     line_bot_api.reply_message(
