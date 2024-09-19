@@ -47,19 +47,25 @@ def handle_message(event):
     profile = line_bot_api.get_profile(user_id)
     display_name = profile.display_name
     if text == "น้อนโส้ม":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n'\วันนี้น้อนโส้มจะทำไอเอฟก๊าบ!"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nวันนี้น้อนโส้มจะทำไอเอฟก๊าบ!"))
 
     elif text == "ไออ้วน":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n'\ไออ้วนไม่กินปลา"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nไออ้วนไม่กินปลา"))
 
     elif text == "อยากผอมจัง":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n'\ออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))
 
     elif text == "พี่ส้ม":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n'\อาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nอาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
 
     elif text == "ฮึ้บ":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n'\ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))   
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))   
+
+    elif text == int("555"):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \n ตาหลกแล๊ะ!!"))
+
+    elif text == "เทอ":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name} \nว่าไงจ๊าาา"))  
 
     # else:
     #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
