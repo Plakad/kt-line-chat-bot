@@ -3,6 +3,9 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, SourceUser,SourceGroup
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -35,24 +38,19 @@ def handle_message(event):
     # Reply with the same message that the user sent
     text = event.message.text
     if text == "น้อนโส้ม":
-        if isinstance(event.source, SourceUser,SourceGroup):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้น้อนโส้มจะทำไอเอฟก๊าบ"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้น้อนโส้มจะทำไอเอฟก๊าบ"))
 
     elif text == "ไออ้วน":
-        if isinstance(event.source, SourceUser,SourceGroup):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ไออ้วนไม่กินปลา"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ไออ้วนไม่กินปลา"))
 
     elif text == "อยากผอมจัง":
-        if isinstance(event.source, SourceUser,SourceGroup):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ออกกำลังกายมั้ยจ้า หรือ ทำ IF ดีน๊า"))
 
     elif text == "พี่ส้ม":
-        if isinstance(event.source, SourceUser,SourceGroup):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="อาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="อาทิตย์นี้พี่ส้มกินชาเย็นเกิน2แก้วแล้วยังน๊าา"))
 
     elif text == "ฮึ้บ":
-        if isinstance(event.source, SourceUser,SourceGroup):
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))       
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))       
 
 
     line_bot_api.reply_message(
