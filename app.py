@@ -42,8 +42,15 @@ def callback():
 def handle_message(event):
     # Reply with the same message that the user sent
     text = event.message.text
-    if text == "น้อนโส้ม":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้น้อนโส้มจะทำไอเอฟก๊าบ"))
+    user_id = event.source.user_id
+
+    # if text == "น้อนโส้ม":
+    #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้น้อนโส้มจะทำไอเอฟก๊าบ"))
+
+    if user_id is not None:
+        profile = line_bot_api.get_profile(user_id)
+        display_name = profile.display_name
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"Hello {display_name}!"))
 
     elif text == "ไออ้วน":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ไออ้วนไม่กินปลา"))
@@ -57,8 +64,8 @@ def handle_message(event):
     elif text == "ฮึ้บ":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))   
 
-    else:
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
+    # else:
+    #     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
 
 
 if __name__ == "__main__":
