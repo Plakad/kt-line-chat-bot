@@ -62,13 +62,13 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ฮึ้บๆน้าค้าบ เป็นกำลังใจให้จ๊าา"))
 
     elif text == "อย่างสีเหลือง":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="เยลลี่? /nเอ้ย เยลโล่"))      
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="เยลลี่? \nเอ้ย เยลโล่"))      
 
     # elif text == str("555"):
     #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตาหลกแล๊ะ!!"))
 
-    # elif text == "เทอ":
-    #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ว่าไงจ๊าาา"))  
+    elif text == "wake up":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตื่งแล้วจ้าา"))  
 
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
