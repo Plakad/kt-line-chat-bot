@@ -64,11 +64,23 @@ def handle_message(event):
     elif text == "อย่างสีเหลือง":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="เยลลี่? \nเอ้ย เยลโล่"))      
 
-    # elif text == str("555"):
-    #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตาหลกแล๊ะ!!"))
+    elif text == str("555"):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตาหลกแล๊ะ!!"))
 
     elif text == "wake up":
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตื่งแล้วจ้าา"))  
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตื่งแล้วจ้าา")) 
+
+    elif text == "อย่างสีเหลือง":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="เยลลี่? \nเอ้ย เยลโล่"))      
+
+    elif text == str("555"):
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"ตาหลกแล๊ะ!!"))
+
+    elif text == "ป้าส้ม":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้ป้าส้มจะ IF แล้วนะ!!!\nจริงๆนะ"))      
+
+    elif text == "พี่ส้ม":
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"อยากกินชาเย็นกับเอสเย็นทุกวันเลยโว้ยย")) 
 
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=text))
