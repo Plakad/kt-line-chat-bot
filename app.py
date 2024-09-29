@@ -79,6 +79,7 @@ def handle_message(event):
     elif text == "ป้าส้ม":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="วันนี้ป้าส้มจะ IF แล้วนะ!!!\nจริงๆนะ"))      
 
+
     elif text == "พี่ส้ม":
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=f"อยากกินชาเย็นกับเอสเย็นทุกวันเลยโว้ยย")) 
 
