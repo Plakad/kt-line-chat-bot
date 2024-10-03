@@ -1,9 +1,13 @@
 import os
-from flask import Flask, request, abort
+from flask import Flask, request, abort,  jsonify
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, SourceUser,SourceGroup
 from dotenv import load_dotenv
+import logging
+
+# Initialize logger
+logging.basicConfig(level=logging.INFO)
 
 # Load environment variables from .env file
 load_dotenv()
@@ -17,26 +21,30 @@ handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 def home():
     return "Welcome to My Line Chat Bot! \n'\ เขียนให้ดูรกๆ \n'\ รกๆอีกสักบรรทัด >>*<< \n'\ (Kanpot: Demo LineChatBot)"
 
-@app.route("/callback", methods=['POST'])
+@app.route("/callback", methods=['GET', 'POST'])
 def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
+    if request.method == 'GET':
+        # Optionally log the GET request or just return a simple response
+        logging.info("GET request received. Returning OK.")
+        return 'OK', 200
 
-    # get request body as text
+    # Handle POST requests as normal
+    signature = request.headers.get('X-Line-Signature')
     body = request.get_data(as_text=True)
-    app.logger.info(f"Request body: {body}")
 
-    # handle webhook body
-    try:
-        handler.handle(body, signature)
-    except InvalidSignatureError:
-        app.logger.error("Invalid signature. Check your channel access token/secret.")
-        abort(400)
-    except Exception as e:
-        app.logger.error(f"Error: {e}")
-        abort(500)
+    if signature:
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            logging.error("Invalid signature")
+            abort(400)
+        return 'OK'
 
-    return 'OK'
+    if not body:
+        logging.info("Empty POST request received.")
+        return jsonify({"error": "Empty POST request"}), 400
+
+    return 'OK', 200
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
